@@ -1,12 +1,15 @@
-package com.lab4.util;
+package com.lab4.services;
+
+import org.springframework.stereotype.Service;
 
 import java.util.Locale;
 
+@Service
 public class Translator {
 
-    public static String writeResult(double angle, Locale locale, double scalMult) {
+    public String writeResult(double angle, Locale locale, double scalMult) {
         String result;
-        if(locale != null) {
+        if (locale != null) {
             String tempLocale = locale.toString();
             if (tempLocale.toLowerCase().equals("ukrainian") || tempLocale.toLowerCase().equals("ukraine")) {
                 if (angle == -100) {
@@ -18,33 +21,25 @@ public class Translator {
                 } else {
                     result = "Пряма паралельна поверхні або лежить в ній";
                 }
-            }
-            else {
-                if(angle == -100){
+            } else {
+                if (angle == -100) {
                     result = "Bad input, calculations are not possible";
-                }
-                else if(scalMult != 0 && Math.ceil(angle) != 90){
+                } else if (scalMult != 0 && Math.ceil(angle) != 90) {
                     result = "A line cross over the surface at an angle: " + angle;
-                }
-                else if(scalMult != 0){
+                } else if (scalMult != 0) {
                     result = "A line perpendicular to the surface";
-                }
-                else {
+                } else {
                     result = "A line is parallel to the surface or belongs to it";
                 }
             }
-        }
-        else{
-            if(angle == -100){
+        } else {
+            if (angle == -100) {
                 result = "Bad input, calculations are not possible";
-            }
-            else if(scalMult != 0 && Math.ceil(angle) != 90){
+            } else if (scalMult != 0 && Math.ceil(angle) != 90) {
                 result = "A line cross over the surface at an angle: " + angle;
-            }
-            else if(scalMult != 0){
+            } else if (scalMult != 0) {
                 result = "A line perpendicular to the surface";
-            }
-            else {
+            } else {
                 result = "A line is parallel to the surface or belongs to it";
             }
         }
