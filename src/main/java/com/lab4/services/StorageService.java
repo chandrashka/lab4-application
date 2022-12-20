@@ -17,10 +17,7 @@ public class StorageService {
     private Map<Integer, ResponseDTO> storage = new HashMap<>();
 
     public ResponseDTO getResponse(Integer id) {
-        if(storage.containsKey(id)){
-            return storage.get(id);
-        }
-        return null;
+        return storage.get(id);
     }
 
     public int putResponse(ResponseDTO response){

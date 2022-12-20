@@ -126,4 +126,28 @@ public class ApplicationTest {
         mvc.perform(post(new URI("/api/lab4/")).contentType(MediaType.APPLICATION_JSON).content(request))
                 .andExpect(content().string(containsString("Bad input")));
     }
+
+    @Test
+    public void superBadInput() throws Exception{
+        String request = """
+                 {
+                      "surfaceDTO": {
+                          "a": "a",
+                          "b": "b",
+                          "c": 1,
+                          "d": 1
+                      },
+                      "lineDTO": {
+                          "x0": "x",
+                          "y0": 0,
+                          "z0": 0,
+                          "l": 0,
+                          "m": 0,
+                          "n": 0
+                      }
+                  }
+                """;
+        mvc.perform(post(new URI("/api/lab4/")).contentType(MediaType.APPLICATION_JSON).content(request))
+                .andExpect(status().is(400));
+    }
 }
