@@ -23,13 +23,9 @@ public class MainController {
 
     @GetMapping("/api/lab4/{id}")
     public ResponseEntity<?> getTestResponse(@PathVariable Integer id) {
-        if(storage != null) {
+
             ResponseDTO response = storage.getResponse(id);
             return ResponseEntity.ok(Objects.requireNonNullElse(response, "Not found :("));
-        }
-        else {
-            return ResponseEntity.ok("Storage is empty");
-        }
     }
 
     @PostMapping("/api/lab4")
